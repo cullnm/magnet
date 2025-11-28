@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: magnet_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: magnet_mining
+      POSTGRES_USER: magnet_user
+      POSTGRES_PASSWORD: magnet_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

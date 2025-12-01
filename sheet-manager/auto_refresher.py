@@ -99,33 +99,6 @@ while True:
                 github = ""
                 subnet_url = ""
             
-            print(netuid, first_miner_time_str)
-            # print(netuid, subnet)
-
-            # print(
-            #     f"{netuid}, {subnet.subnet_name}, "
-            #     f"network_reg_time={network_reg_time}, "
-            #     f"first_miner_block={first_miner_block}, "
-            #     f"first_miner_time={first_miner_time_str}, "
-            #     f"top_miner_uid={top_miner_uid}, "
-            #     f"top_miner_block={top_miner_block}, "
-            #     f"top_miner_time={top_miner_time_str}, "
-            #     f"top_miner_hotkey={top_miner_hotkey}, "
-            #     f"owner_incentive={owner_incentive}, "
-            #     f"{github}, {subnet_url}, {price}, {tao_in}"
-            # )
-            # subnets_info.append(
-            #     {
-            #         "netuid" : netuid,
-            #         "name" : subnet.subnet_name,
-            #         "reg_time" : network_reg_time.strftime("%Y-%m-%d %H:%M:%S"),
-            #         "owner_incentive" : owner_incentive,
-            #         "github" : github,
-            #         "subnet_url" : subnet_url,
-            #         "price" : price.tao,
-            #         "tao_in" : tao_in.tao
-            #     }
-            # )
             subnets_info.append(
                 {
                     "netuid": netuid,
@@ -144,7 +117,6 @@ while True:
                     "tao_in": tao_in.tao,
                 }
             )
-        # print(subnets_info)
         with open("live_subnets_data.json", "w") as f:
             json.dump(subnets_info, f)
     except Exception as e:

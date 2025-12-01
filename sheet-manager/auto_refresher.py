@@ -19,6 +19,7 @@ while True:
         subnets_info = []
 
         for netuid in subnet_uids:
+            # print(netuid)
             subnet = subtensor.subnet(netuid)
 
             owner_hotkey = subnet.owner_hotkey
@@ -52,6 +53,7 @@ while True:
             owner_incentive = float(incentives[owner_uid])
 
             miners_mask = ~validator_permit
+            miners_mask[owner_uid] = False
             
             # ---- earliest miner registration time (optional) ----
             if np.any(miners_mask):
@@ -97,6 +99,7 @@ while True:
                 github = ""
                 subnet_url = ""
             
+            print(netuid, first_miner_time_str)
             # print(netuid, subnet)
 
             # print(
@@ -111,18 +114,18 @@ while True:
             #     f"owner_incentive={owner_incentive}, "
             #     f"{github}, {subnet_url}, {price}, {tao_in}"
             # )
-            subnets_info.append(
-                {
-                    "netuid" : netuid,
-                    "name" : subnet.subnet_name,
-                    "reg_time" : network_reg_time.strftime("%Y-%m-%d %H:%M:%S"),
-                    "owner_incentive" : owner_incentive,
-                    "github" : github,
-                    "subnet_url" : subnet_url,
-                    "price" : price.tao,
-                    "tao_in" : tao_in.tao
-                }
-            )
+            # subnets_info.append(
+            #     {
+            #         "netuid" : netuid,
+            #         "name" : subnet.subnet_name,
+            #         "reg_time" : network_reg_time.strftime("%Y-%m-%d %H:%M:%S"),
+            #         "owner_incentive" : owner_incentive,
+            #         "github" : github,
+            #         "subnet_url" : subnet_url,
+            #         "price" : price.tao,
+            #         "tao_in" : tao_in.tao
+            #     }
+            # )
             subnets_info.append(
                 {
                     "netuid": netuid,

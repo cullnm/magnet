@@ -14,12 +14,14 @@ DATA_FILE = Path(__file__).parent / "live_subnets_data.json"
 class SubnetInfo(BaseModel):
     netuid: int
     name: str
-    reg_time: str  # "%Y-%m-%d %H:%M:%S"
+    network_reg_time: str  # "%Y-%m-%d %H:%M:%S"
     owner_incentive: float
     github: Optional[str] = None
     subnet_url: Optional[str] = None
     price: float
     tao_in: float
+    top_miner_reg_time: str  # "%Y-%m-%d %H:%M:%S"
+    first_miner_reg_time: str  # "%Y-%m-%d %H:%M:%S"
 
 
 def load_data() -> list[SubnetInfo]:
